@@ -1,0 +1,15 @@
+<div class="navbar rounded-xl mt-4">
+	<div class="navbar-start">
+		<p class="navbar-item text-xl font-bold">NWP-Domaci-1</p>
+	</div>
+	<div class="navbar-center whitespace-nowrap">
+		<a [routerLink]="'/'" class="navbar-item">Home</a>
+		<a [routerLink]="'entity-extraction'" class="navbar-item">Entity Extraction</a>
+		<a [routerLink]="'text-similarity'" class="navbar-item">Text Similarity</a>
+        <a [routerLink]="'language-detection'" class="navbar-item">Language Detection</a>
+        <a [routerLink]="'sentiment-analysis'" class="navbar-item">Sentiment Analysis</a>
+	</div>
+	<div class="navbar-end">
+		<app-history-modal></app-history-modal>
+	</div>
+</div>
