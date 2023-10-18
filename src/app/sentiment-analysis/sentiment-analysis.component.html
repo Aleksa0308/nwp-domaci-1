@@ -1,1 +1,24 @@
-<p>sentiment-analysis works!</p>
+<!-- Title -->
+<h1 class="mb-2">Sentiment Analysis</h1>
+
+<form class="p-6 rounded-xl shadow-lg max-w-full bg-white">
+    <!-- Input Row -->
+    <div class="flex flex-col gap-4">
+        <!-- Checkbox -->
+        <select class="select select-block select-ghost-primary cursor-pointer">
+            <option class="cursor-pointer">en - English</option>
+            <option class="cursor-pointer">it - Italian</option>
+            <option class="cursor-pointer">auto</option>
+        </select>
+        <!-- TextArea -->
+        <div class="col-span-2">
+            <textarea class="textarea-ghost-primary textarea-block textarea w-96" 
+                rows="6"
+                placeholder="The Mona Lisa is a sixteenth century oil painting created by Leonardo. It's held at the Louvre in Paris."></textarea>
+        </div>
+    </div>
+    <!-- Submit Button -->
+    <div class="flex justify-end gap-2 mt-4">
+        <button type="submit" class="btn btn-outline-primary">Detect</button>
+    </div>
+</form>

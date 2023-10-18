@@ -6,6 +6,7 @@
 @layer base {
     html {
       font-family: "Poppins", system-ui, sans-serif;
+      @apply bg-gradient-to-l from-gray-200 via-sky-100 to-stone-100
     }
     
   }
