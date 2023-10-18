@@ -6,13 +6,21 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeInputComponent } from './home-input/home-input.component';
 import { HistoryModalComponent } from './history-modal/history-modal.component';
+import { EntityExtractionComponent } from './entity-extraction/entity-extraction.component';
+import { TextSimilarityComponent } from './text-similarity/text-similarity.component';
+import { LanguageDetectionComponent } from './language-detection/language-detection.component';
+import { SentimentAnalysisComponent } from './sentiment-analysis/sentiment-analysis.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeInputComponent,
-    HistoryModalComponent
+    HistoryModalComponent,
+    EntityExtractionComponent,
+    TextSimilarityComponent,
+    LanguageDetectionComponent,
+    SentimentAnalysisComponent
   ],
   imports: [
     BrowserModule,
