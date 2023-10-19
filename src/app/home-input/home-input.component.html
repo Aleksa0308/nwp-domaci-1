@@ -2,8 +2,12 @@
     <h1>
         In order to use the App, please provide your token
     </h1>
-    <form class="flex gap-2 items-center">
-        <input class="w-96 input input-primary" placeholder="Token" />
+    <form (submit)="onSubmit(tokenForm)" #tokenForm="ngForm" class="flex gap-2 items-center">
+        <input 
+        class="w-96 input input-primary" 
+        placeholder="Token"
+        name="token"
+        ngModel />
         <button class="btn btn-outline-primary" type="submit">
             Save
         </button>
