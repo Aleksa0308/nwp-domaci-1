@@ -1,7 +1,7 @@
 <!-- Title -->
 <h1 class="mb-2">Language Detection</h1>
 
-<form class="p-6 rounded-xl shadow-lg max-w-full bg-white">
+<form #languageForm="ngForm" (submit)="onSubmit(languageForm)" class="p-6 rounded-xl shadow-lg max-w-full bg-white">
     <!-- Input Row -->
     <div class="flex flex-col gap-4">
         <!-- Checkbox -->
@@ -13,11 +13,14 @@
         <div class="col-span-2">
             <textarea class="textarea-ghost-primary textarea-block textarea w-96" 
                 rows="6"
-                placeholder="The Mona Lisa is a sixteenth century oil painting created by Leonardo. It's held at the Louvre in Paris."></textarea>
+                placeholder="The Mona Lisa is a sixteenth century oil painting created by Leonardo. It's held at the Louvre in Paris."
+                ngModel
+                name="text"
+                required></textarea>
         </div>
     </div>
     <!-- Submit Button -->
     <div class="flex justify-end gap-2 mt-4">
-        <button type="submit" class="btn btn-outline-primary">Detect</button>
+        <button [disabled]="languageForm.invalid" type="submit" class="btn btn-outline-primary">Detect</button>
     </div>
 </form>

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeInputComponent } from './home-input/home-input.component';
-import { EntityExtractionComponent } from './entity-extraction/entity-extraction.component';
-import { TextSimilarityComponent } from './text-similarity/text-similarity.component';
-import { LanguageDetectionComponent } from './language-detection/language-detection.component';
-import { SentimentAnalysisComponent } from './sentiment-analysis/sentiment-analysis.component';
+import { HomeInputComponent } from './components/home-input/home-input.component';
+import { EntityExtractionComponent } from './components/entity-extraction/entity-extraction.component';
+import { TextSimilarityComponent } from './components/text-similarity/text-similarity.component';
+import { LanguageDetectionComponent } from './components/language-detection/language-detection.component';
+import { SentimentAnalysisComponent } from './components/sentiment-analysis/sentiment-analysis.component';
 import { tokenGuard } from './token.guard';
 
 const routes: Routes = [

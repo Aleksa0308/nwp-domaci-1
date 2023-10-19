@@ -1,7 +1,7 @@
 <!-- Title -->
 <h1 class="mb-2">Entity Extraction</h1>
 
-<form #entityForm="ngForm" class="p-6 rounded-xl shadow-lg max-w-full bg-white">
+<form #entityForm="ngForm" (submit)="onSubmit(entityForm)" class="p-6 rounded-xl shadow-lg max-w-full bg-white">
     <!-- Input Row -->
     <div class="grid grid-cols-2 gap-8">
         <!-- min_confidence -->
@@ -9,7 +9,7 @@
             <label class="font-bold">min_confidence</label>
             <div class="relative">
                 <label class="absolute right-0 top-4">1</label>
-                    <input type="range" class="range w-full" value="0.5" step="0.1" min="0" max="1" />
+                    <input type="range" name="min_confidence" ngModel="0.6" class="range w-full" step="0.1" min="0" max="1" />
                 <label class="absolute left-0 top-4">0</label>
             </div>
         </div>
@@ -17,11 +17,11 @@
             <!-- Include checkboxes -->
             <label class="font-bold">Include</label>
             <div class="flex gap-2">
-                <input id="image" type="checkbox" class="checkbox checkbox-solid" />
+                <input id="image" name="image" ngModel type="checkbox" class="checkbox checkbox-solid" />
                 <label for="image" class="cursor-pointer">Image</label>
-                <input id="abstract" type="checkbox" class="checkbox checkbox-solid" />
+                <input id="abstract" name="abstract" ngModel type="checkbox" class="checkbox checkbox-solid" />
                 <label for="abstract" class="cursor-pointer">Abstract</label>
-                <input id="categories" type="checkbox" class="checkbox checkbox-solid" />
+                <input id="categories" name="categories" ngModel type="checkbox" class="checkbox checkbox-solid" />
                 <label for="categories" class="cursor-pointer">Categories</label>
             </div>
         </div>
@@ -29,11 +29,21 @@
         <div class="col-span-2">
             <textarea class="textarea-ghost-primary textarea-block textarea" 
                 rows="6"
-                placeholder="The Mona Lisa is a sixteenth century oil painting created by Leonardo. It's held at the Louvre in Paris."></textarea>
+                placeholder="The Mona Lisa is a sixteenth century oil painting created by Leonardo. It's held at the Louvre in Paris."
+                ngModel
+                name="text"
+                required></textarea>
         </div>
     </div>
     <!-- Submit Button -->
     <div class="flex justify-end gap-2 mt-4">
-        <button type="submit" class="btn btn-outline-primary">Extract Entities</button>
+        <button [disabled]="entityForm.invalid" type="submit" class="btn btn-outline-primary">Extract Entities</button>
     </div>
 </form>
+<!-- Loop Entities -->
+
+<section class="mt-4 grid grid-cols-3 gap-3">
+    <div *ngFor="let entity of entities">
+      <app-entity-card [entity]="entity"></app-entity-card>
+    </div>
+  </section>

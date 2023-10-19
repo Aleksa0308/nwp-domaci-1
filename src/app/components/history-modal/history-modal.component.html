@@ -1,0 +1,31 @@
+
+<label class="btn btn-solid-secondary" for="modal-2">History</label>
+
+<input class="modal-state" id="modal-2" type="checkbox" />
+<div class="modal w-screen">
+	<label class="modal-overlay" for="modal-2"></label>
+	<div class="modal-content flex flex-col gap-5 max-w-3xl">
+		<label for="modal-2" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</label>
+		<!-- Title -->
+		<h2 class="text-xl font-bold">History</h2>
+		<!-- Table -->
+		<div class="flex w-full overflow-x-auto">
+			<table *ngIf="historyArray.length > 0"  class="table-zebra table">
+				<thead>
+					<tr>
+						<th>Time</th>
+						<th>Type</th>
+						<th>Query</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let history of historyArray">
+						<td>{{ history.timestamp }}</td>
+						<td class="font-bold">{{ history.type }}</td>
+						<td>{{ history.query }}</td>
+					</tr>
+				</tbody>
+			</table>
+		<span class="w-56" *ngIf="historyArray.length === 0">No Data!</span>
+	</div>
+</div>
