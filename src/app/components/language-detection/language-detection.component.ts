@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { DandelionApiService } from 'src/app/services/dandelion-api.service';
+import { DetectedLang } from 'src/app/types/dandelion-types';
 
 @Component({
   selector: 'app-language-detection',
@@ -7,12 +10,33 @@ import { NgForm } from '@angular/forms';
 })
 export class LanguageDetectionComponent {
 
+  dandelionService = inject(DandelionApiService)
+  toaster = inject(ToastrService)
+
+  detectedLanguages: DetectedLang[] = [];
+  hasResults: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   onSubmit(form: NgForm){
-    console.log("Submit button clicked!");
+    
+    const text = form.value.text;
+    const clean = form.value.clean;
+
+    this.dandelionService.getLanguageDetectionResults(text, clean).subscribe(
+      (response) => {
+        this.toaster.success("Data fetched successfully!");
+        this.detectedLanguages = response.detectedLangs;
+        this.hasResults = true;
+      },
+      (error) => {
+        this.toaster.error("Error while fetching data from Dandelion API!");
+        this.hasResults = false;
+      }
+    )
+
   }
 }

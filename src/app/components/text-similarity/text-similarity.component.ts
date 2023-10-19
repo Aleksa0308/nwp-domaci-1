@@ -20,8 +20,12 @@ export class TextSimilarityComponent {
   }
 
   onSubmit(form: NgForm){
+
+    const text1 = form.value.text1;
+    const text2 = form.value.text2;
+
     // Send data to service
-    this.dandelionService.getTextSimilarityResults(form.value.text1, form.value.text2).subscribe(
+    this.dandelionService.getTextSimilarityResults(text1, text2).subscribe(
       (response) => {
         this.similarity = +(response.similarity * 100).toFixed(2);
         this.hasResults = true;
