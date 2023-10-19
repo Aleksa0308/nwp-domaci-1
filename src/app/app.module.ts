@@ -10,6 +10,7 @@ import { EntityExtractionComponent } from './entity-extraction/entity-extraction
 import { TextSimilarityComponent } from './text-similarity/text-similarity.component';
 import { LanguageDetectionComponent } from './language-detection/language-detection.component';
 import { SentimentAnalysisComponent } from './sentiment-analysis/sentiment-analysis.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,10 @@ import { SentimentAnalysisComponent } from './sentiment-analysis/sentiment-analy
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
