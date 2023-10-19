@@ -10,6 +10,7 @@ import { EntityExtractionComponent } from './entity-extraction/entity-extraction
 import { TextSimilarityComponent } from './text-similarity/text-similarity.component';
 import { LanguageDetectionComponent } from './language-detection/language-detection.component';
 import { SentimentAnalysisComponent } from './sentiment-analysis/sentiment-analysis.component';
+import { CookieService } from 'ngx-cookie-service';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -26,9 +27,10 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

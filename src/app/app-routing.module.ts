@@ -5,13 +5,33 @@ import { EntityExtractionComponent } from './entity-extraction/entity-extraction
 import { TextSimilarityComponent } from './text-similarity/text-similarity.component';
 import { LanguageDetectionComponent } from './language-detection/language-detection.component';
 import { SentimentAnalysisComponent } from './sentiment-analysis/sentiment-analysis.component';
+import { tokenGuard } from './token.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeInputComponent },
-  { path: 'entity-extraction', component: EntityExtractionComponent },
-  { path: 'text-similarity', component: TextSimilarityComponent },
-  { path: 'language-detection', component: LanguageDetectionComponent },
-  { path: 'sentiment-analysis', component: SentimentAnalysisComponent },
+  { 
+    path: '', 
+    component: HomeInputComponent,
+  },
+  { 
+    path: 'entity-extraction', 
+    component: EntityExtractionComponent,
+    canActivate: [tokenGuard], 
+  },
+  { 
+    path: 'text-similarity', 
+    component: TextSimilarityComponent, 
+    canActivate: [tokenGuard],
+  },
+  { 
+    path: 'language-detection', 
+    component: LanguageDetectionComponent,
+    canActivate: [tokenGuard],
+  },
+  { 
+    path: 'sentiment-analysis', 
+    component: SentimentAnalysisComponent,
+    canActivate: [tokenGuard], 
+  },
 ];
 
 @NgModule({
