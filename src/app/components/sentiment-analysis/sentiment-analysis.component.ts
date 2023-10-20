@@ -38,7 +38,7 @@ export class SentimentAnalysisComponent {
       },
       (error) => {
         this.hasResults = false;
-        this.toaster.error("Error while fetching data from Dandelion API!");
+        this.toaster.error(error.error.message, "Error");
       }
     )
   }

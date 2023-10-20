@@ -33,7 +33,7 @@ export class LanguageDetectionComponent {
         this.hasResults = true;
       },
       (error) => {
-        this.toaster.error("Error while fetching data from Dandelion API!");
+        this.toaster.error(error.error.message, "Error");
         this.hasResults = false;
       }
     )

@@ -39,7 +39,7 @@ export class EntityExtractionComponent {
         this.toaster.success("Data fetched successfully!");
       },
       (error) => {
-        this.toaster.error("Error while fetching data from Dandelion API!");
+        this.toaster.error(error.error.message, "Error");
       }
     )
   }

@@ -1,11 +1,26 @@
-<label class="btn btn-primary" for="entity-modal">Learn More</label>
+<label class="btn btn-primary" for="{{entity.title}}">Learn More</label>
 
-<input class="modal-state" id="entity-modal" type="checkbox" />
-<div class="modal w-screen">
-	<label class="modal-overlay" for="entity-modal"></label>
+<input class="modal-state" id="{{entity.title}}" type="checkbox" />
+<div class="modal w-screen p-4">
+	<label class="modal-overlay pr-4" for="{{entity.title}}"></label>
 	<div class="modal-content flex flex-col gap-5 max-w-3xl">
-		<label for="entity-modal" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</label>
+		<label for="{{entity.title}}" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</label>
 		<h2 class="text-xl font-bold">{{entity.title}}</h2>
-		<span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur dolorum voluptate ratione dicta. Maxime cupiditate, est commodi consectetur earum iure, optio, obcaecati in nulla saepe maiores nobis iste quasi alias!</span>
-	</div>
+		<section class="max-w-full grid grid-cols-2 gap-2">
+			<img *ngIf="entity.image" [src]="entity.image.thumbnail" class="rounded-lg shadow-xl" alt="">
+			<div *ngIf="entity.abstract" class="p-2 shadow-md rounded-lg h-fit">
+				<label class="font-bold text-lg" for="">Abstract</label>
+				<h2>
+					{{entity.abstract}}
+				</h2>
+			</div>
+		</section>
+		<!-- Display Categories with *ngFor -->
+		<section *ngIf="entity.categories">
+			<label for="" class="font-bold text-lg">Categories</label>
+			<div class="flex gap-2 flex-wrap">
+				<span *ngFor="let category of entity.categories" class="badge badge-lg badge-flat-primary">{{category}}</span>
+			</div>
+		</section>
+		</div>
 </div>
