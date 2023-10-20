@@ -23,56 +23,47 @@ export class DandelionApiService {
 
   constructor() { }
 
-  // ENTITY EXTRACTION
+  //? ENTITY EXTRACTION
   getEntityExtractionResults(min_confidence: string, include: string[], text: string): Observable<EntityExtractionResponse>{
-    //? Join include array into a string with comma as a separator
+    // Join include array into a string with comma as a separator
     const includeString = include.join(",");
-   
-    //? Build query string
+    // Build query string
     const queryString = `${this.nexUrl}&text=${text}&min_confidence=${min_confidence}${includeString !== '' ? `&include=${includeString}` : ''}&token=${this.token}`;
-    
     // Get current timestamp in format YYYY-MM-DD HH:MM:SS
     const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
-
     //! Push query to history
     this.historyService.pushToHistory(timestamp, "GET", queryString);
     
     return this.httpClient.get<EntityExtractionResponse>(queryString);
   }
 
-  // TEXT SIMILARITY
+  //? TEXT SIMILARITY
   getTextSimilarityResults(text1: string, text2: string): Observable<TextSimilarityResponse>{
     const queryString = `${this.simApi}&text1=${text1}&text2=${text2}&token=${this.token}`;
-
     // Get current timestamp in format YYYY-MM-DD HH:MM:SS
     const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
-
     //! Push query to history
     this.historyService.pushToHistory(timestamp, "GET", queryString);
 
     return this.httpClient.get<TextSimilarityResponse>(queryString);
   }
 
-  // LANGUAGE DETECTION
+  //? LANGUAGE DETECTION
   getLanguageDetectionResults(text: string, clean: boolean): Observable<LanguageDetectionResponse>{
     const queryString = `${this.liApi}?text=${text}&clean=${clean}&token=${this.token}`;
-
     // Get current timestamp in format YYYY-MM-DD HH:MM:SS
     const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
-
     //! Push query to history
     this.historyService.pushToHistory(timestamp, "GET", queryString);
 
     return this.httpClient.get<LanguageDetectionResponse>(queryString);
   }
 
-  // SENTIMENT ANALYSIS
+  //? SENTIMENT ANALYSIS
   getSentimentAnalysisResults(text: string, lang: string): Observable<SentimentResponse>{
     const queryString = `${this.sentApi}?text=${text}&lang=${lang}&token=${this.token}`;
-
     // Get current timestamp in format YYYY-MM-DD HH:MM:SS
     const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
-
     //! Push query to history
     this.historyService.pushToHistory(timestamp, "GET", queryString);
 
