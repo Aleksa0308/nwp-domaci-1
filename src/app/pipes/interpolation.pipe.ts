@@ -10,7 +10,7 @@ export class InterpolationPipe implements PipeTransform {
     const redRGB = {r: 255, g: 0, b: 0};
     const greenRGB = {r: 0, g: 255, b: 0};
 
-    value = Math.min(1, Math.max(-1, value));
+    value =  (value + 1) / 2
 
     let newColort = {
       r: redRGB.r + (greenRGB.r - redRGB.r) * value,
@@ -20,6 +20,7 @@ export class InterpolationPipe implements PipeTransform {
 
     // Create an RGB color string
     const color = `rgb(${newColort.r}, ${newColort.g}, ${newColort.b})`;
+
     return color;
   }
 
