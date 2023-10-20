@@ -7,18 +7,20 @@ export class InterpolationPipe implements PipeTransform {
 
   transform(value: number, ...args: unknown[]): string {
     // Ensure the value is within the range -1 to 1
-  value = Math.min(1, Math.max(-1, value));
+    const redRGB = {r: 255, g: 0, b: 0};
+    const greenRGB = {r: 0, g: 255, b: 0};
 
-  // Calculate the hue (0 for red, 120 for green) based on the value
-  const hue = (1 - value) * 120;
+    value = Math.min(1, Math.max(-1, value));
 
-  // Create an HSL color string
-  const color = `text-red-500`;
+    let newColort = {
+      r: redRGB.r + (greenRGB.r - redRGB.r) * value,
+      g: redRGB.g + (greenRGB.g - redRGB.g) * value,
+      b: redRGB.b + (greenRGB.b - redRGB.b) * value,
+    }
 
-  console.log(color);
-  
-
-  return color;
+    // Create an RGB color string
+    const color = `rgb(${newColort.r}, ${newColort.g}, ${newColort.b})`;
+    return color;
   }
 
 }

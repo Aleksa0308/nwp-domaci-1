@@ -42,7 +42,7 @@
                     </div>
                     <div>
                         <h2 class="text-xl font-bold">Type</h2>
-                        <p [ngClass]="+sentimentResult.sentiment.score | interpolation">
+                        <p [style.color]="+sentimentResult.sentiment.score | interpolation">
                             <span class="text-xl font-black">{{sentimentResult.sentiment.type}}</span>
                         </p>
                     </div>
