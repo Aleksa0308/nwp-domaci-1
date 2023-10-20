@@ -5,7 +5,9 @@
     <!-- Input Row -->
     <div class="flex flex-col gap-4">
         <!-- Checkbox -->
-        <select class="select select-block select-ghost-primary cursor-pointer">
+        <select class="select select-block select-ghost-primary cursor-pointer"
+        name="lang"
+        ngModel="en - English">
             <option class="cursor-pointer">en - English</option>
             <option class="cursor-pointer">it - Italian</option>
             <option class="cursor-pointer">auto</option>
@@ -25,3 +27,22 @@
         <button [disabled]="sentimentForm.invalid" type="submit" class="btn btn-outline-primary">Analyse</button>
     </div>
 </form>
+
+<!-- Display Results -->
+<div class="mt-4 grid grid-cols-1 gap-2">
+    <div *ngIf="hasResults">
+                <div class="flex justify-evenly bg-white rounded-lg shadow-lg p-4">
+                    <div>
+                        <h2 class="text-xl font-bold">Language</h2>
+                        <p class="text-2xl font-normal">{{sentimentResult.lang}}</p>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold">Confidence</h2>
+                        <p class="text-2xl font-normal">{{sentimentResult.sentiment.score}}</p>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold">Type</h2>
+                        <p class="text-2xl font-black">{{sentimentResult.sentiment.type}}</p>
+                    </div>
+                </div>
+    </div>

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { environment } from 'src/environments/environment';
-import { EntityExtractionResponse, LanguageDetectionResponse, TextSimilarityResponse } from '../types/dandelion-types';
+import { EntityExtractionResponse, LanguageDetectionResponse, SentimentResponse, TextSimilarityResponse } from '../types/dandelion-types';
 import { HistoryService } from './history.service';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -64,6 +64,19 @@ export class DandelionApiService {
     this.historyService.pushToHistory(timestamp, "GET", queryString);
 
     return this.httpClient.get<LanguageDetectionResponse>(queryString);
+  }
+
+  // SENTIMENT ANALYSIS
+  getSentimentAnalysisResults(text: string, lang: string): Observable<SentimentResponse>{
+    const queryString = `${this.sentApi}?text=${text}&lang=${lang}&token=${this.token}`;
+
+    // Get current timestamp in format YYYY-MM-DD HH:MM:SS
+    const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
+    //! Push query to history
+    this.historyService.pushToHistory(timestamp, "GET", queryString);
+
+    return this.httpClient.get<SentimentResponse>(queryString);
   }
 }
 

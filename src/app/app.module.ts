@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EntityCardComponent } from './components/entity-extraction/entity-card/entity-card.component';
+import { EntityModalComponent } from './components/entity-extraction/entity-modal/entity-modal.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { EntityCardComponent } from './components/entity-extraction/entity-card/
     LanguageDetectionComponent,
     SentimentAnalysisComponent,
     EntityCardComponent,
+    EntityModalComponent,
   ],
   imports: [
     BrowserModule,
